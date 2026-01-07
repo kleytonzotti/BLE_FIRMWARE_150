@@ -1,0 +1,6 @@
+C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c:84:6:P2PS_STM_App_Notification	24	static
+C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c:281:6:P2PS_APP_Notification	16	static
+C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c:315:6:P2PS_APP_Init	8	static
+C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c:330:6:P2PS_APP_LED_BUTTON_context_Init	8	static
+C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c:372:6:P2PS_APP_SW1_Button_Action	8	static
+C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c:386:6:P2PS_Send_Notification	8	static

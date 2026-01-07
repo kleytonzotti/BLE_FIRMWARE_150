@@ -1,0 +1,20 @@
+06:37:26 **** Incremental Build of configuration Debug for project BLE_p2pServer ****
+make -j16 all 
+arm-none-eabi-gcc "C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/app_ble.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_STM32WB5M_DK -DSTM32WB5Mxx -DUSE_HAL_DRIVER -c -I../../Core/Inc -I../../Drivers/STM32WBxx_HAL_Driver/Inc -I../../Drivers/STM32WBxx_HAL_Driver/Inc/Legacy -I../../Drivers/CMSIS/Device/ST/STM32WBxx/Include -I../../Drivers/CMSIS/Include -I../../STM32_WPAN/App -I../../Utilities/lpm/tiny_lpm -I../../Middlewares/ST/STM32_WPAN -I../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread -I../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl -I../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/shci -I../../Middlewares/ST/STM32_WPAN/utilities -I../../Middlewares/ST/STM32_WPAN/ble/core -I../../Middlewares/ST/STM32_WPAN/ble/core/auto -I../../Middlewares/ST/STM32_WPAN/ble/core/template -I../../Middlewares/ST/STM32_WPAN/ble/svc/Inc -I../../Middlewares/ST/STM32_WPAN/ble/svc/Src -I../../Utilities/sequencer -I../../Middlewares/ST/STM32_WPAN/ble -I../../Drivers/BSP/STM32WB5MM-DK -I../../Drivers/BSP/Components/ssd1315 -I../../Drivers/BSP/Components/Common -I../../Utilities/Fonts -I../../Utilities/LCD -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Application/User/STM32_WPAN/App/app_ble.d" -MT"Application/User/STM32_WPAN/App/app_ble.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Application/User/STM32_WPAN/App/app_ble.o"
+arm-none-eabi-gcc -o "BLE_p2pServer.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\STM32\.metadata\project2\BLE_p2pServer\STM32CubeIDE\STM32WB5MMGHX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BLE_p2pServer.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BLE_p2pServer.elf
+ 
+arm-none-eabi-size  BLE_p2pServer.elf 
+arm-none-eabi-objdump -h -S BLE_p2pServer.elf  > "BLE_p2pServer.list"
+arm-none-eabi-objcopy  -O ihex BLE_p2pServer.elf  "BLE_p2pServer.hex"
+   text	   data	    bss	    dec	    hex	filename
+  89040	    690	  14895	 104625	  198b1	BLE_p2pServer.elf
+Finished building: default.size.stdout
+ 
+Finished building: BLE_p2pServer.hex
+ 
+Finished building: BLE_p2pServer.list
+ 
+
+06:37:33 Build Finished. 0 errors, 0 warnings. (took 7s.166ms)
+
