@@ -561,9 +561,9 @@ void APP_BLE_Init(void)
    sprintf(BdAddress, "BD_ad=%02x%02x%02x%02x%02x%02x", bdaddr[5],bdaddr[4],bdaddr[3],bdaddr[2],bdaddr[1],bdaddr[0]);
    BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
    BSP_LCD_Refresh(0);
-   UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"ST BLE P2P Server", CENTER_MODE);
-   UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
-   UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
+   UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"MODULO PROGRAMAVEL", CENTER_MODE);
+   //UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
+   //UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
    BSP_LCD_Refresh(0);
   /* USER CODE END APP_BLE_Init_2 */
 
@@ -629,9 +629,9 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
       sprintf(BdAddress, "BD_ad=%02x%02x%02x%02x%02x%02x", bdaddr[5], bdaddr[4], bdaddr[3], bdaddr[2], bdaddr[1], bdaddr[0]);
       BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
       BSP_LCD_Refresh(0);
-      UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"ST BLE P2P Server", CENTER_MODE);
-      UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
-      UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
+      UTIL_LCD_DisplayStringAt(0, LINE(2), (uint8_t *)"DESCONECTADO", CENTER_MODE);
+      //UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
+      //UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
       BSP_LCD_Refresh(0);
       /* USER CODE END EVT_DISCONN_COMPLETE */
       break; /* HCI_DISCONNECTION_COMPLETE_EVT_CODE */
@@ -1111,7 +1111,7 @@ static void Ble_Hci_Gap_Gatt_Init(void)
 
   if (role > 0)
   {
-    const char *name = "P2PSRV1";
+    const char *name = "MÓDULO_PROGRAMÁVEL";
     ret = aci_gap_init(role,
                        CFG_PRIVACY,
                        APPBLE_GAP_DEVICE_NAME_LENGTH,

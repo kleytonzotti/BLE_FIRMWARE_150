@@ -1,5 +1,5 @@
 Application/User/STM32_WPAN/App/p2p_server_app.o: \
- C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c \
+ C:/repo/BLE_FIRMWARE_150/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.c \
  ../../Core/Inc/main.h \
  ../../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../../Core/Inc/stm32wbxx_hal_conf.h \
@@ -122,7 +122,7 @@ Application/User/STM32_WPAN/App/p2p_server_app.o: \
  ../../Middlewares/ST/STM32_WPAN/ble/svc/Inc/template_stm.h \
  ../../Middlewares/ST/STM32_WPAN/ble/svc/Inc/svc_ctl.h \
  ../../Middlewares/ST/STM32_WPAN/ble/svc/Inc/uuid.h \
- C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.h \
+ C:/repo/BLE_FIRMWARE_150/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.h \
  ../../Utilities/sequencer/stm32_seq.h
 ../../Core/Inc/main.h:
 ../../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h:
@@ -250,5 +250,5 @@ Application/User/STM32_WPAN/App/p2p_server_app.o: \
 ../../Middlewares/ST/STM32_WPAN/ble/svc/Inc/template_stm.h:
 ../../Middlewares/ST/STM32_WPAN/ble/svc/Inc/svc_ctl.h:
 ../../Middlewares/ST/STM32_WPAN/ble/svc/Inc/uuid.h:
-C:/STM32/.metadata/project2/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.h:
+C:/repo/BLE_FIRMWARE_150/BLE_p2pServer/STM32_WPAN/App/p2p_server_app.h:
 ../../Utilities/sequencer/stm32_seq.h:
