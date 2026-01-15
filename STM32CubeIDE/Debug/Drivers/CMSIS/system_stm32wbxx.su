@@ -1,0 +1,2 @@
+C:/repo/BLE_FIRMWARE_150/Core/Src/system_stm32wbxx.c:191:6:SystemInit	4	static
+C:/repo/BLE_FIRMWARE_150/Core/Src/system_stm32wbxx.c:281:6:SystemCoreClockUpdate	32	static
