@@ -562,9 +562,10 @@ void APP_BLE_Init(void)
    BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
    BSP_LCD_Refresh(0);
    UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"MODULO PROGRAMAVEL", CENTER_MODE);
-   //UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
-   //UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
+   UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
+   UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"AGUARDANDO CONEXAO", CENTER_MODE);
    BSP_LCD_Refresh(0);
+   BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
   /* USER CODE END APP_BLE_Init_2 */
 
   return;
