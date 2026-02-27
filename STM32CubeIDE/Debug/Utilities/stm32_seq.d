@@ -1,6 +1,6 @@
 Utilities/stm32_seq.o: \
- C:/repo/BLE_FIRMWARE_150/Utilities/sequencer/stm32_seq.c \
- C:/repo/BLE_FIRMWARE_150/Utilities/sequencer/stm32_seq.h \
+ C:/repo/BLE_p2pServer/Utilities/sequencer/stm32_seq.c \
+ C:/repo/BLE_p2pServer/Utilities/sequencer/stm32_seq.h \
  ../../Core/Inc/utilities_conf.h \
  ../../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../../Drivers/CMSIS/Include/cmsis_gcc.h ../../Core/Inc/app_conf.h \
@@ -64,7 +64,7 @@ Utilities/stm32_seq.o: \
  ../../Core/Inc/stm32wb5mm_dk_conf.h \
  ../../Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_errno.h \
  ../../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h
-C:/repo/BLE_FIRMWARE_150/Utilities/sequencer/stm32_seq.h:
+C:/repo/BLE_p2pServer/Utilities/sequencer/stm32_seq.h:
 ../../Core/Inc/utilities_conf.h:
 ../../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../../Drivers/CMSIS/Include/cmsis_gcc.h:

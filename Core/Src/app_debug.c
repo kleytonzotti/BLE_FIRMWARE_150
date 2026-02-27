@@ -31,6 +31,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+
 typedef PACKED_STRUCT
 {
   GPIO_TypeDef* port;
@@ -38,6 +39,9 @@ typedef PACKED_STRUCT
   uint8_t enable;
   uint8_t reserved;
 } APPD_GpioConfig_t;
+
+
+
 /* USER CODE END PTD */
 
 /* Private defines -----------------------------------------------------------*/

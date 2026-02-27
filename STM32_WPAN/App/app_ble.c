@@ -35,11 +35,11 @@
 
 #include "p2p_server_app.h"
 
-#include "stm32wb5mm_dk.h"
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+/*zotti 26/02/2026*/
+#include <stdlib.h> // Necessário para rand() e srand()
+/*zotti 26/02/2026*/
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -159,6 +159,23 @@ typedef struct
 
 /* USER CODE BEGIN PTD */
 
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+/* ZOTTII 26/02/2005*/
+
+typedef struct __attribute__((packed))
+{
+  uint16_t rpm;      // 2 bytes
+  uint8_t  tps;      // 1 byte
+  uint8_t  map;      // 1 byte
+  int8_t   temp;     // 1 byte
+  uint16_t battery;  // 2 bytes (Tensão x 100)
+} EcuPacket_t;
+
+/* ZOTTII 26/02/2005*/
+
+/* USER CODE END PTD */
+
 /* USER CODE END PTD */
 
 /* Private defines -----------------------------------------------------------*/
@@ -171,6 +188,7 @@ typedef struct
 
 /* USER CODE BEGIN PD */
 #define LED_ON_TIMEOUT                 (0.005*1000*1000/CFG_TS_TICK_VAL) /**< 5ms */
+#define CFG_TASK_SEND_ECU_DATA_ID      (31)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -226,7 +244,7 @@ uint8_t index_con_int, mutex;
  * Advertising Data
  */
 #if (P2P_SERVER1 != 0)
-static const char a_LocalName[] = {AD_TYPE_COMPLETE_LOCAL_NAME , 'P', '2', 'P', 'S', 'R', 'V', '1'};
+static const char a_LocalName[] = {AD_TYPE_COMPLETE_LOCAL_NAME , 'C', 'E', 'N', 'T', 'R', 'A', 'L'};
 uint8_t a_ManufData[14] = {sizeof(a_ManufData)-1,
                            AD_TYPE_MANUFACTURER_SPECIFIC_DATA,
                            0x01,                               /*SKD version */
@@ -362,6 +380,9 @@ static void Connection_Interval_Update_Req(void);
 #endif /* L2CAP_REQUEST_NEW_CONN_PARAM != 0 */
 
 /* USER CODE BEGIN PFP */
+/*ZOTTI 26/02/2026*/
+static void ECU_Simulate_Running(void);
+
 
 /* USER CODE END PFP */
 
@@ -506,6 +527,8 @@ void APP_BLE_Init(void)
   P2PS_APP_Init();
 
   /* USER CODE BEGIN APP_BLE_Init_3 */
+  /*ZOTTI 26/02/2026*/
+
 
   /* USER CODE END APP_BLE_Init_3 */
 
@@ -561,11 +584,10 @@ void APP_BLE_Init(void)
    sprintf(BdAddress, "BD_ad=%02x%02x%02x%02x%02x%02x", bdaddr[5],bdaddr[4],bdaddr[3],bdaddr[2],bdaddr[1],bdaddr[0]);
    BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
    BSP_LCD_Refresh(0);
-   UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"MODULO PROGRAMAVEL", CENTER_MODE);
+   UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"ST BLE P2P Server", CENTER_MODE);
    UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
-   UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"AGUARDANDO CONEXAO", CENTER_MODE);
+   UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
    BSP_LCD_Refresh(0);
-   BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
   /* USER CODE END APP_BLE_Init_2 */
 
   return;
@@ -630,9 +652,9 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
       sprintf(BdAddress, "BD_ad=%02x%02x%02x%02x%02x%02x", bdaddr[5], bdaddr[4], bdaddr[3], bdaddr[2], bdaddr[1], bdaddr[0]);
       BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
       BSP_LCD_Refresh(0);
-      UTIL_LCD_DisplayStringAt(0, LINE(2), (uint8_t *)"DESCONECTADO", CENTER_MODE);
-      //UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
-      //UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
+      UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"ST BLE P2P Server", CENTER_MODE);
+      UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
+      UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"ADVERTISING", LEFT_MODE);
       BSP_LCD_Refresh(0);
       /* USER CODE END EVT_DISCONN_COMPLETE */
       break; /* HCI_DISCONNECTION_COMPLETE_EVT_CODE */
@@ -738,9 +760,10 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
           P2PS_APP_Notification(&HandleNotification);
           /* USER CODE BEGIN HCI_EVT_LE_CONN_COMPLETE */
           bdaddr= BleGetBdAddress();
-          sprintf(BdAddress, "BD_ad=%02x%02x%02x%02x%02x%02x", bdaddr[5],bdaddr[4],bdaddr[3],bdaddr[2],bdaddr[1],bdaddr[0]);
-          UTIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
-          UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"CONNECTED  ", LEFT_MODE);
+          //sprintf(BdAddress, "BD_ad=%02x%02x%02x%02x%02x%02x", bdaddr[5],bdaddr[4],bdaddr[3],bdaddr[2],bdaddr[1],bdaddr[0]);
+          //TIL_LCD_DisplayStringAt(0, LINE(1), (uint8_t *)BdAddress, LEFT_MODE);
+          BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
+          UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"CONECTADO", LEFT_MODE);
           BSP_LCD_Refresh(0);
           /* USER CODE END HCI_EVT_LE_CONN_COMPLETE */
           break; /* HCI_LE_CONNECTION_COMPLETE_SUBEVT_CODE */
@@ -1112,7 +1135,7 @@ static void Ble_Hci_Gap_Gatt_Init(void)
 
   if (role > 0)
   {
-    const char *name = "MÓDULO_PROGRAMÁVEL";
+    const char *name = "P2PSRV1";
     ret = aci_gap_init(role,
                        CFG_PRIVACY,
                        APPBLE_GAP_DEVICE_NAME_LENGTH,
@@ -1485,6 +1508,27 @@ static void Connection_Interval_Update_Req(void)
 #endif /* L2CAP_REQUEST_NEW_CONN_PARAM != 0 */
 
 /* USER CODE BEGIN FD_SPECIFIC_FUNCTIONS */
+/*ZOTTI 26/02/2025*/
+/* USER CODE BEGIN FD_SPECIFIC_FUNCTIONS */
+void ECU_SendData_BLE(uint16_t rpm, uint8_t tps, uint8_t map, int8_t temp, float battery)
+{
+  EcuPacket_t packet; // Agora o compilador já terá lido a definição no topo!
+
+  packet.rpm = rpm;
+  packet.tps = tps;
+  packet.map = map;
+  packet.temp = temp;
+  packet.battery = (uint16_t)(battery * 100.0f); // Converte para binário
+
+  P2PS_STM_App_Update_Char(P2P_NOTIFY_CHAR_UUID, (uint8_t *)&packet);
+}
+/* USER CODE END FD_SPECIFIC_FUNCTIONS */
+
+
+
+
+/*ZOTTI 26/02/2025*/
+/* USER CODE END FD_SPECIFIC_FUNCTIONS */
 
 /* USER CODE END FD_SPECIFIC_FUNCTIONS */
 /*************************************************************

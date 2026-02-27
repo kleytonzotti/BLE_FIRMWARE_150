@@ -1,5 +1,5 @@
 Middlewares/STM32_WPAN/hci_tl.o: \
- C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/hci_tl.c \
+ C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/hci_tl.c \
  ../../Middlewares/ST/STM32_WPAN/ble/ble_common.h \
  ../../STM32_WPAN/App/ble_conf.h ../../Core/Inc/app_conf.h \
  ../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
@@ -73,8 +73,8 @@ Middlewares/STM32_WPAN/hci_tl.o: \
  ../../Middlewares/ST/STM32_WPAN/ble/core/template/osal.h \
  ../../Middlewares/ST/STM32_WPAN/ble/core/template/compiler.h \
  ../../Middlewares/ST/STM32_WPAN/utilities/stm_list.h \
- C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl.h \
- C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/hci_tl.h
+ C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl.h \
+ C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/hci_tl.h
 ../../Middlewares/ST/STM32_WPAN/ble/ble_common.h:
 ../../STM32_WPAN/App/ble_conf.h:
 ../../Core/Inc/app_conf.h:
@@ -150,5 +150,5 @@ Middlewares/STM32_WPAN/hci_tl.o: \
 ../../Middlewares/ST/STM32_WPAN/ble/core/template/osal.h:
 ../../Middlewares/ST/STM32_WPAN/ble/core/template/compiler.h:
 ../../Middlewares/ST/STM32_WPAN/utilities/stm_list.h:
-C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl.h:
-C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/hci_tl.h:
+C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/tl.h:
+C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/tl/hci_tl.h:

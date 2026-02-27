@@ -149,7 +149,7 @@ void MX_APPE_Init(void)
   UTIL_LCD_SetBackColor(SSD1315_COLOR_BLACK);
   BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
   BSP_LCD_Refresh(0);
-  UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"Módulo Programável", CENTER_MODE);
+  UTIL_LCD_DisplayStringAt(0, 0, (uint8_t *)"ST BLE P2P Server", CENTER_MODE);
   BSP_LCD_Refresh(0);
 
   //Switch RGB LED off

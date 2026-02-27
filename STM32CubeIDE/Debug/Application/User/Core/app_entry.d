@@ -1,6 +1,6 @@
 Application/User/Core/app_entry.o: \
- C:/repo/BLE_FIRMWARE_150/Core/Src/app_entry.c \
- ../../Core/Inc/app_common.h ../../Core/Inc/app_conf.h \
+ C:/repo/BLE_p2pServer/Core/Src/app_entry.c ../../Core/Inc/app_common.h \
+ ../../Core/Inc/app_conf.h \
  ../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
  ../../Core/Inc/hw_conf.h ../../Core/Inc/hw_if.h \
  ../../Drivers/CMSIS/Device/ST/STM32WBxx/Include/stm32wbxx.h \

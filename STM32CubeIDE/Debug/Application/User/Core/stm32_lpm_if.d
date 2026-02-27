@@ -1,5 +1,5 @@
 Application/User/Core/stm32_lpm_if.o: \
- C:/repo/BLE_FIRMWARE_150/Core/Src/stm32_lpm_if.c \
+ C:/repo/BLE_p2pServer/Core/Src/stm32_lpm_if.c \
  ../../Core/Inc/stm32_lpm_if.h ../../Utilities/lpm/tiny_lpm/stm32_lpm.h \
  ../../Core/Inc/app_conf.h \
  ../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
