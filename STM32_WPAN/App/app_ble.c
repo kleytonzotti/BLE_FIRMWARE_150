@@ -83,7 +83,7 @@ typedef struct _tSecurityParams
    * requirements.
    * 0x00 : no security required
    * 0x01 : host should initiate security by sending the slave security
-   *        request command
+   * request command
    * 0x02 : host need not send the clave security request but it
    * has to wait for paiirng to complete before doing any other
    * processing
@@ -152,14 +152,13 @@ typedef struct
   uint8_t Advertising_mgr_timer_Id;
 
   uint8_t SwitchOffGPIO_timer_Id;
-  /* USER CODE BEGIN PTD_1*/
-
+  /* USER CODE BEGIN PTD_1 */
+  /*ZOTTI 26/02/2026*/
+  uint8_t Ecu_Telemetry_timer_Id;
+  /*ZOTTI 26/02/2026*/
   /* USER CODE END PTD_1 */
 }BleApplicationContext_t;
 
-/* USER CODE BEGIN PTD */
-
-/* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 /* ZOTTII 26/02/2005*/
 
@@ -173,9 +172,6 @@ typedef struct __attribute__((packed))
 } EcuPacket_t;
 
 /* ZOTTII 26/02/2005*/
-
-/* USER CODE END PTD */
-
 /* USER CODE END PTD */
 
 /* Private defines -----------------------------------------------------------*/
@@ -212,7 +208,7 @@ static const uint8_t a_MBdAddr[BD_ADDR_SIZE_LOCAL] =
 static uint8_t a_BdAddrUdn[BD_ADDR_SIZE_LOCAL];
 
 /**
- *   Identity root key used to derive IRK and DHK(Legacy)
+ * Identity root key used to derive IRK and DHK(Legacy)
  */
 static const uint8_t a_BLE_CfgIrValue[16] = CFG_BLE_IR;
 
@@ -382,8 +378,8 @@ static void Connection_Interval_Update_Req(void);
 /* USER CODE BEGIN PFP */
 /*ZOTTI 26/02/2026*/
 static void ECU_Simulate_Running(void);
-
-
+static void ECU_Trigger_Telemetry_Task(void);
+static void ECU_SendData_BLE(uint16_t rpm, uint8_t tps, uint8_t map, int8_t temp, float battery);
 /* USER CODE END PFP */
 
 /* External variables --------------------------------------------------------*/
@@ -527,9 +523,16 @@ void APP_BLE_Init(void)
   P2PS_APP_Init();
 
   /* USER CODE BEGIN APP_BLE_Init_3 */
-  /*ZOTTI 26/02/2026*/
+  /* ZOTTI 26/02/2026 */
+  /* Registra a tarefa de simulação */
+  UTIL_SEQ_RegTask(1 << CFG_TASK_SEND_ECU_DATA_ID, UTIL_SEQ_RFU, ECU_Simulate_Running);
 
+  /* Cria o timer exclusivo para a ECU */
+  HW_TS_Create(CFG_TIM_PROC_ID_ISR, &(BleApplicationContext.Ecu_Telemetry_timer_Id),
+               hw_ts_Repeated, ECU_Trigger_Telemetry_Task);
 
+  /* Inicia o timer para rodar a cada 1 segundo (1.000.000 us) */
+  HW_TS_Start(BleApplicationContext.Ecu_Telemetry_timer_Id, (1000000 / CFG_TS_TICK_VAL));
   /* USER CODE END APP_BLE_Init_3 */
 
   /**
@@ -765,6 +768,7 @@ SVCCTL_UserEvtFlowStatus_t SVCCTL_App_Notification(void *p_Pckt)
           BSP_LCD_Clear(0,SSD1315_COLOR_BLACK);
           UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *)"CONECTADO", LEFT_MODE);
           BSP_LCD_Refresh(0);
+
           /* USER CODE END HCI_EVT_LE_CONN_COMPLETE */
           break; /* HCI_LE_CONNECTION_COMPLETE_SUBEVT_CODE */
         }
@@ -1413,12 +1417,12 @@ static void Adv_Cancel(void)
     BleApplicationContext.Device_Connection_Status = APP_BLE_IDLE;
     if (ret != BLE_STATUS_SUCCESS)
     {
-      APP_DBG_MSG("** STOP ADVERTISING **  Failed \r\n\r");
+      APP_DBG_MSG("** STOP ADVERTISING ** Failed \r\n\r");
     }
     else
     {
       APP_DBG_MSG("  \r\n\r");
-      APP_DBG_MSG("** STOP ADVERTISING **  \r\n\r");
+      APP_DBG_MSG("** STOP ADVERTISING ** \r\n\r");
     }
   }
 
@@ -1508,29 +1512,42 @@ static void Connection_Interval_Update_Req(void)
 #endif /* L2CAP_REQUEST_NEW_CONN_PARAM != 0 */
 
 /* USER CODE BEGIN FD_SPECIFIC_FUNCTIONS */
-/*ZOTTI 26/02/2025*/
-/* USER CODE BEGIN FD_SPECIFIC_FUNCTIONS */
+/*ZOTTI 26/02/2026*/
+
+// Chamado pelo Timer a cada 1 segundo
+void ECU_Trigger_Telemetry_Task(void)
+{
+  UTIL_SEQ_SetTask(1 << CFG_TASK_SEND_ECU_DATA_ID, CFG_SCH_PRIO_0);
+}
+
+// Gera os valores fixos solicitados para teste
+void ECU_Simulate_Running(void)
+{
+  uint16_t rpm     = 1850;
+  uint8_t  tps     = 5;
+  uint8_t  map     = 25;
+  int8_t   temp    = 90;
+  float    battery = 13.8f;
+
+  ECU_SendData_BLE(rpm, tps, map, temp, battery);
+}
+
+// Monta o pacote binário de 7 bytes e envia
 void ECU_SendData_BLE(uint16_t rpm, uint8_t tps, uint8_t map, int8_t temp, float battery)
 {
-  EcuPacket_t packet; // Agora o compilador já terá lido a definição no topo!
-
+  EcuPacket_t packet;
   packet.rpm = rpm;
   packet.tps = tps;
   packet.map = map;
   packet.temp = temp;
-  packet.battery = (uint16_t)(battery * 100.0f); // Converte para binário
+  packet.battery = (uint16_t)(battery * 100.0f);
 
   P2PS_STM_App_Update_Char(P2P_NOTIFY_CHAR_UUID, (uint8_t *)&packet);
 }
+
+/*ZOTTI 26/02/2026*/
 /* USER CODE END FD_SPECIFIC_FUNCTIONS */
 
-
-
-
-/*ZOTTI 26/02/2025*/
-/* USER CODE END FD_SPECIFIC_FUNCTIONS */
-
-/* USER CODE END FD_SPECIFIC_FUNCTIONS */
 /*************************************************************
  *
  * WRAP FUNCTIONS

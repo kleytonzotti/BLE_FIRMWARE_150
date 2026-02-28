@@ -1,5 +1,6 @@
 Application/User/Core/stm32wbxx_hal_msp.o: \
- C:/repo/BLE_p2pServer/Core/Src/stm32wbxx_hal_msp.c ../../Core/Inc/main.h \
+ C:/repo/BLE_FIRMWARE_150/Core/Src/stm32wbxx_hal_msp.c \
+ ../../Core/Inc/main.h \
  ../../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../../Core/Inc/stm32wbxx_hal_conf.h \
  ../../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \

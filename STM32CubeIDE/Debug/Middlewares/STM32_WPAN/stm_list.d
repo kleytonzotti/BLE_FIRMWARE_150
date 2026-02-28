@@ -1,6 +1,6 @@
 Middlewares/STM32_WPAN/stm_list.o: \
- C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/utilities/stm_list.c \
- C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/utilities/utilities_common.h \
+ C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/utilities/stm_list.c \
+ C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/utilities/utilities_common.h \
  ../../Core/Inc/app_conf.h \
  ../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
  ../../Core/Inc/hw_conf.h ../../Core/Inc/hw_if.h \
@@ -63,10 +63,10 @@ Middlewares/STM32_WPAN/stm_list.o: \
  ../../Core/Inc/stm32wb5mm_dk_conf.h \
  ../../Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_errno.h \
  ../../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h \
- C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/utilities/stm_list.h \
+ C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/utilities/stm_list.h \
  ../../Middlewares/ST/STM32_WPAN/stm32_wpan_common.h \
  ../../Drivers/CMSIS/Include/cmsis_compiler.h
-C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/utilities/utilities_common.h:
+C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/utilities/utilities_common.h:
 ../../Core/Inc/app_conf.h:
 ../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h:
 ../../Core/Inc/hw_conf.h:
@@ -130,6 +130,6 @@ C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/utilities/utilities_common.h:
 ../../Core/Inc/stm32wb5mm_dk_conf.h:
 ../../Drivers/BSP/STM32WB5MM-DK/stm32wb5mm_dk_errno.h:
 ../../Middlewares/ST/STM32_WPAN/ble/core/ble_bufsize.h:
-C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/utilities/stm_list.h:
+C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/utilities/stm_list.h:
 ../../Middlewares/ST/STM32_WPAN/stm32_wpan_common.h:
 ../../Drivers/CMSIS/Include/cmsis_compiler.h:

@@ -1,5 +1,5 @@
 Middlewares/STM32_WPAN/ble_gap_aci.o: \
- C:/repo/BLE_p2pServer/Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.c \
+ C:/repo/BLE_FIRMWARE_150/Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.c \
  ../../Middlewares/ST/STM32_WPAN/ble/core/auto/ble_gap_aci.h \
  ../../Middlewares/ST/STM32_WPAN/ble/core/auto/ble_types.h \
  ../../Middlewares/ST/STM32_WPAN/ble/core/template/ble_const.h \

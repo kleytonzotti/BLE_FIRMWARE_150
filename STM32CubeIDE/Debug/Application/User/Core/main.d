@@ -1,4 +1,4 @@
-Application/User/Core/main.o: C:/repo/BLE_p2pServer/Core/Src/main.c \
+Application/User/Core/main.o: C:/repo/BLE_FIRMWARE_150/Core/Src/main.c \
  ../../Core/Inc/main.h \
  ../../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../../Core/Inc/stm32wbxx_hal_conf.h \

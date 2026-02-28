@@ -1,5 +1,5 @@
 Application/User/Core/hw_timerserver.o: \
- C:/repo/BLE_p2pServer/Core/Src/hw_timerserver.c \
+ C:/repo/BLE_FIRMWARE_150/Core/Src/hw_timerserver.c \
  ../../Core/Inc/app_common.h ../../Core/Inc/app_conf.h \
  ../../Middlewares/ST/STM32_WPAN/interface/patterns/ble_thread/hw.h \
  ../../Core/Inc/hw_conf.h ../../Core/Inc/hw_if.h \

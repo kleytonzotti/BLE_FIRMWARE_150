@@ -1,5 +1,5 @@
 Drivers/STM32WBxx_HAL_Driver/stm32wbxx_hal_dma_ex.o: \
- C:/repo/BLE_p2pServer/Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_dma_ex.c \
+ C:/repo/BLE_FIRMWARE_150/Drivers/STM32WBxx_HAL_Driver/Src/stm32wbxx_hal_dma_ex.c \
  ../../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal.h \
  ../../Core/Inc/stm32wbxx_hal_conf.h \
  ../../Drivers/STM32WBxx_HAL_Driver/Inc/stm32wbxx_hal_dma.h \
