@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "Debug ECU — STM32WB5MM-DK",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "stlink",
+            "gdbPath": "C:/Users/kleyton/AppData/Local/stm32cube/bundles/gnu-gdb-for-stm32/13.3.1+st.10/bin/arm-none-eabi-gdb.exe",
+            "stlinkPath": "C:/Users/kleyton/AppData/Local/stm32cube/bundles/stlink-gdbserver/7.13.0+st.3/bin/ST-LINK_gdbserver.exe",
+            "stm32cubeprogrammer": "C:/Users/kleyton/AppData/Local/stm32cube/bundles/programmer/2.21.0/bin",
+            "device": "STM32WB55RGVx",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "executable": "${workspaceFolder}/build/Debug/ECU_PROGRAMAVEL.elf",
+            "svdFile": "",
+            "preLaunchTask": "CMake Build Debug"
+        },
+        {
+            "name": "Flash ECU (sem debug)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "stlink",
+            "gdbPath": "C:/Users/kleyton/AppData/Local/stm32cube/bundles/gnu-gdb-for-stm32/13.3.1+st.10/bin/arm-none-eabi-gdb.exe",
+            "stlinkPath": "C:/Users/kleyton/AppData/Local/stm32cube/bundles/stlink-gdbserver/7.13.0+st.3/bin/ST-LINK_gdbserver.exe",
+            "stm32cubeprogrammer": "C:/Users/kleyton/AppData/Local/stm32cube/bundles/programmer/2.21.0/bin",
+            "device": "STM32WB55RGVx",
+            "interface": "swd",
+            "executable": "${workspaceFolder}/build/Debug/ECU_PROGRAMAVEL.elf",
+            "runToEntryPoint": "",
+            "preLaunchTask": "CMake Build Debug"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+# Build output
+build/
+*.elf
+*.hex
+*.bin
+*.map
+
+# IDE
+.settings/
+.cproject
+.project
+*.launch
+
+# CMake generated
+CMakeFiles/
+cmake_install.cmake
+Makefile
+CTestTestfile.cmake
+
+# OS
+Thumbs.db
+.DS_Store
