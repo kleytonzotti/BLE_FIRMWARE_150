@@ -257,4 +257,32 @@ typedef struct {
 #define LED_RED_ON()    GPIO_SET(LED_RED_PORT, LED_RED_PIN)
 #define LED_RED_OFF()   GPIO_CLR(LED_RED_PORT, LED_RED_PIN)
 
+/* ================================================================
+ * SIMULAÇÃO — STM32WB5MM-DK (pinos onboard da placa de dev)
+ *
+ * BTN_NEXT (SW1 / User Button 1): PC4 — próximo cenário (ativo em 0)
+ * BTN_PREV (SW2 / User Button 2): PE4 — cenário anterior (ativo em 0)
+ *
+ * OLED SSD1315 128×64 via I2C software:
+ *   SCL → PC0 (AF4 = I2C3 no hardware, mas usamos SW I2C)
+ *   SDA → PC1 (AF4 = I2C3 no hardware, mas usamos SW I2C)
+ *
+ * ATENÇÃO: PC0/PC1 são ADC analógico no modo ECU real.
+ *          Em SIM_MODE são reconfigurados como GPIO saída.
+ *          PE4 requer clock de GPIOE habilitado (bit 4 em RCC_AHB2ENR).
+ * ================================================================ */
+#define BTN_NEXT_PORT   GPIOC
+#define BTN_NEXT_PIN    4
+#define BTN_PREV_PORT   GPIOE
+#define BTN_PREV_PIN    4
+
+#define BTN_NEXT_PRESSED()  (GPIO_READ(BTN_NEXT_PORT, BTN_NEXT_PIN) == 0U)
+#define BTN_PREV_PRESSED()  (GPIO_READ(BTN_PREV_PORT, BTN_PREV_PIN) == 0U)
+
+#define OLED_SCL_PORT   GPIOC
+#define OLED_SCL_PIN    0
+#define OLED_SDA_PORT   GPIOC
+#define OLED_SDA_PIN    1
+#define OLED_I2C_ADDR   0x3CU  /* SSD1315, SA0 = GND */
+
 #endif /* PINOUT_H */

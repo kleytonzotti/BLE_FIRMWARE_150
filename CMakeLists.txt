@@ -62,6 +62,10 @@ set(sources_SRCS
     ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/ECU/Src/drv_flash.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/ECU/Src/drv_gpio.c
     ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/ECU/Src/drv_can_mcp2515.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/Drivers/ECU/Src/drv_oled.c
+
+    # Simulação (STM32WB5MM-DK)
+    ${CMAKE_CURRENT_SOURCE_DIR}/ECU/Src/ecu_sim.c
 
     # BLE
     ${CMAKE_CURRENT_SOURCE_DIR}/BLE/Src/ble_ecu_service.c

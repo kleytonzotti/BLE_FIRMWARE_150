@@ -24,6 +24,7 @@
 #include "drv_timer.h"
 #include "app_ble.h"
 #include "pinout.h"
+#include "ecu_sim.h"
 
 /* ----------------------------------------------------------------
  * DWT para delay em µs (habilitado antes dos timers)
@@ -101,6 +102,9 @@ int main(void)
     /* 4. ECU: carrega perfil, inicializa subsistemas e timers */
     ECU_Engine_Init();
 
+    /* 5. Simulação: OLED + botões da STM32WB5MM-DK */
+    ECU_Sim_Init();
+
     /* ----------------------------------------------------------------
      * Loop principal
      * Nenhuma lógica de tempo crítico aqui — tudo via ISR + tasks.
@@ -115,6 +119,9 @@ int main(void)
         ECU_Engine_Task_10ms();
         ECU_Engine_Task_50ms();
         ECU_Engine_Task_100ms();
+
+        /* Simulação: lê botões, injeta valores em g_engine, atualiza OLED */
+        ECU_Sim_Task_10ms();
 
         /* Blink LED de heartbeat: 500ms */
         uint32_t now = DRV_Timer_GetMs();

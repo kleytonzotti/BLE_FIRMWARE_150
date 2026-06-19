@@ -3,7 +3,21 @@
         {
             "name": "STM32",
             "compileCommands": "${workspaceFolder}/build/Debug/compile_commands.json",
-            "intelliSenseMode": "windows-msvc-x64"
+            "includePath": [
+                "${workspaceFolder}/Inc",
+                "${workspaceFolder}/ECU/Inc",
+                "${workspaceFolder}/Drivers/ECU/Inc",
+                "${workspaceFolder}/BLE/Inc",
+                "${workspaceFolder}/STM32_WPAN/App"
+            ],
+            "defines": [
+                "STM32WB5Mxx",
+                "USE_FULL_LL_DRIVER"
+            ],
+            "intelliSenseMode": "gcc-arm",
+            "compilerPath": "",
+            "cStandard": "c11",
+            "cppStandard": "c++20"
         }
     ],
     "version": 4
